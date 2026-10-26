@@ -1,5 +1,7 @@
 # AURA — Anime Power-Up
 
+Live demo: [aura-simulator-by-shlok.vercel.app](https://aura-simulator-by-shlok.vercel.app)
+
 A browser-based webcam aura experience built with plain HTML, CSS, and JavaScript modules. It uses MediaPipe Tasks Vision for person segmentation, pose and hand tracking; WebGL2 for the aura shader; a 2D canvas for effects; and Web Audio for music control and synthesized accents.
 
 ## Run locally
