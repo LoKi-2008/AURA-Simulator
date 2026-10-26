@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#08090d"><title>AURA — Anime Power-Up</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <video id="camera" autoplay muted playsinline></video>
+  <canvas id="aura" aria-hidden="true"></canvas>
+  <canvas id="overlay" aria-hidden="true"></canvas>
+  <div id="hud" class="hud hidden-ui">
+    <section class="telemetry"><div class="brand">AURA <span>POWER SYSTEM</span></div><div>FPS <b id="fps">--</b></div><div>POSE <b id="poseState">NOT DETECTED</b></div><div>FORM <b id="levelName">IDLE</b></div><div class="power-number"><small>POWER LEVEL</small><strong id="powerNumber">0000</strong><em id="over9000">IT’S OVER 9000</em></div></section>
+    <div class="meter"><div class="meter-track"><i id="meterFill"></i></div><span>MAX</span></div>
+    <div id="banner" class="banner"></div>
+    <div class="bottom-hint" id="hint">Stand back so your whole body is visible · Hold the charging pose · Press SPACE to test</div>
+    <div class="key-help">P pose mode · S sound · R reset · H HUD · F fullscreen · D debug</div>
+  </div>
+  <section id="startScreen" class="start-screen">
+    <div class="start-card"><div class="eyebrow">REAL-TIME AURA GENERATOR</div><h1>AURA</h1><p>Hold the pose. Power up.</p><div class="loading" id="loading">Camera and vision models are ready when you are.</div><button id="startButton">START CAMERA</button><small>Allow camera access · Best viewed with your full upper body in frame</small><div id="error" role="alert"></div></div>
+  </section>
+  <div id="debugLabel" class="debug-label"></div>
+  <script type="module" src="./main.js"></script>
+</body></html>

@@ -1,0 +1,9 @@
+import { NAMES } from './powerLevel.js';
+export class HUD{
+ constructor(){this.el=document.querySelector('#hud');this.startScreen=document.querySelector('#startScreen');this.loading=document.querySelector('#loading');this.error=document.querySelector('#error');this.banner=document.querySelector('#banner');this.hint=document.querySelector('#hint');this.debugLabel=document.querySelector('#debugLabel');this.hidden=false;this.debug=false;this.hintTimer=setTimeout(()=>this.hint.classList.add('fade'),8500)}
+ status(s){this.loading.textContent=s} showError(s){this.error.textContent=s;document.querySelector('#startButton').textContent='RETRY CAMERA'} started(){this.startScreen.classList.add('off');this.el.classList.remove('hidden-ui')}
+ level(tier){this.banner.textContent=NAMES[tier+1];this.banner.classList.remove('show');void this.banner.offsetWidth;this.banner.classList.add('show')}
+ update({fps,detected,power,tier,mode,debug}){document.querySelector('#fps').textContent=String(Math.round(fps)).padStart(2,'0');document.querySelector('#poseState').textContent=detected?(mode?'RAISED ARMS':'TRACKED'):'NOT DETECTED';document.querySelector('#levelName').textContent=NAMES[tier+1];document.querySelector('#powerNumber').textContent=String(Math.round(power*10000)).padStart(4,'0');document.querySelector('#meterFill').style.height=`${power*100}%`;document.documentElement.style.setProperty('--camera-brightness',String(1-.4*power));if(power>=.9&&!this.over){this.over=true;const e=document.querySelector('#over9000');e.classList.remove('show');void e.offsetWidth;e.classList.add('show')}if(power<.84)this.over=false;if(debug)this.debugLabel.textContent=`DEBUG  mask / pose: ${detected?'yes':'no'}\npowerLevel: ${power.toFixed(3)} · pose mode: ${mode?'raise':'charge'}`}
+ toggle(){this.hidden=!this.hidden;this.el.classList.toggle('hidden-ui',this.hidden)}
+ toggleDebug(){this.debug=!this.debug;document.body.classList.toggle('debug',this.debug);return this.debug}
+}
